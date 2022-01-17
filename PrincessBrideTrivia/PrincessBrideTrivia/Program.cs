@@ -98,7 +98,7 @@ namespace PrincessBrideTrivia
 
         public static void Randomize(string[] questions)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

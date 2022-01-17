@@ -113,8 +113,8 @@ namespace PrincessBrideTrivia.Tests
             }
 
             // Assert
-            bool isEqual = Enumerable.SequenceEqual(randomQuestions, originalQuestions);
-            Assert.IsTrue(isEqual);
+            bool isNotEqual = Enumerable.SequenceEqual(randomQuestions, originalQuestions);
+            Assert.IsFalse(isNotEqual);
         }
     }
 }
