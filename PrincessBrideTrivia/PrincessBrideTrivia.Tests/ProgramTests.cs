@@ -92,14 +92,14 @@ namespace PrincessBrideTrivia.Tests
         // Testing for the extra credit part of the assignment
         [TestMethod]
         [DataRow("a", "b", "c", "d", "e", "f", "g")]
-        public void GetRandomizedQuestions_ReturnsTrueIfEqual(params string[] text) 
+        public void Randomize_ReturnsTrueIfSquenceNotEqual(params string[] text) 
         {
             // Arrange
             List<string> originalQuestions = new List<string>();
             List<string> randomQuestions = new List<string>();
             Question[] questions = new Question[text.Length - 1];
 
-            for (int i = 0;i < text.Length -1; i++)
+            for (int i = 0;i < text.Length - 1; i++)
             {
                 Question question = new Question();
                 question.Text = text[i];
