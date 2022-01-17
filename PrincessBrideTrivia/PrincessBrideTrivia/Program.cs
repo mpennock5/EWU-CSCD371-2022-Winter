@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
+
 namespace PrincessBrideTrivia
 {
     public class Program
@@ -10,7 +11,6 @@ namespace PrincessBrideTrivia
         {
             string filePath = GetFilePath();
             Question[] questions = LoadQuestions(filePath);
-            Randomize(questions);
 
             int numberCorrect = 0;
             for (int i = 0; i < questions.Length; i++)
@@ -94,13 +94,26 @@ namespace PrincessBrideTrivia
                 question.CorrectAnswerIndex = correctAnswerIndex;
                 questions[i] = question;
             }
+            questions = Randomize(questions);
             return questions;
         }
 
         // Added randomize method for extra credit
-        public static void Randomize(Question[] questions)
+        public static Question[] Randomize(Question[] questions)
         {
+            Random random = new Random();
+            int n = 0;           
             
+            while (n < questions.Length)
+            {
+                int j = random.Next(0, questions.Length - 1);
+                Question tempQuestion = questions[n];
+                questions[n] = questions[j];
+                questions[j] = tempQuestion;
+
+                n++;
+            }
+            return questions;
         }
     }
 }
