@@ -1,5 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PrincessBrideTrivia.Tests
 {
@@ -85,6 +87,34 @@ namespace PrincessBrideTrivia.Tests
                 lines[4] = "2";
                 File.AppendAllLines(filePath, lines);
             }
+        }
+
+        // Testing for the extra credit part of the assignment
+        [TestMethod]
+        [DataRow("a", "b", "c", "d", "e", "f", "g")]
+        public void GetRandomizedQuestions_ReturnsTrueIfEqual(params string[] questions) 
+        {
+            // Arrange
+            List<string> originalQuestions = new List<string>();
+            List<string> randomQuestions = new List<string>();
+            for (int i = 0; i < questions.Length - 1; i++)
+            {
+                originalQuestions.Add(questions[i]);
+            }
+
+
+            // Act
+            Program.Randomize(questions);
+
+           
+            for (int i = 0; i < questions.Length - 1; i++)
+            {
+                randomQuestions.Add(questions[i]);
+            }
+
+            // Assert
+            bool isEqual = Enumerable.SequenceEqual(randomQuestions, originalQuestions);
+            Assert.IsTrue(isEqual);
         }
     }
 }

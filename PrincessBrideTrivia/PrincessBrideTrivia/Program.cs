@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace PrincessBrideTrivia
@@ -93,6 +94,11 @@ namespace PrincessBrideTrivia
                 questions[i] = question;
             }
             return questions;
+        }
+
+        public static void Randomize(string[] questions)
+        {
+            throw new NotImplementedException();
         }
     }
 }
