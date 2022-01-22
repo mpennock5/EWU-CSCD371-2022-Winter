@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
 
 namespace Logger.Tests;
 
@@ -9,13 +10,26 @@ public class FileLoggerTests
     public void FileLogger_TakesFilePath_True()
     {
         // Arrange
-        string filePath = "this will be a file path";
+        string filePath = Directory.GetCurrentDirectory();
+
         // Act
-        FileLogger logger = new FileLogger
-        {
-            FilePath = filePath
-        };
+        FileLogger fileLogger = new("logger", Path.Combine(Directory.GetCurrentDirectory(), "Logs.txt"));
+
         // Assert
-        Assert.AreEqual<string>(logger.FilePath, filePath);
+        Assert.AreEqual<string>(fileLogger.FilePath!, filePath);
+    }
+
+    [TestMethod]
+    public void FileLogger_CreatesFileIfNoneExists_True()
+    {
+        // Arrange
+        FileLogger fileLogger = new("logger", Path.Combine(Directory.GetCurrentDirectory(), "Logs.txt"));
+
+        // Act
+        fileLogger.CreateFileIfNoneExists();
+        bool exists = fileLogger.CheckForFile();
+
+        // Assert
+        Assert.IsTrue(exists);
     }
 }
