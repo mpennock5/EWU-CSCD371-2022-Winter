@@ -1,11 +1,14 @@
-﻿namespace Logger
+﻿namespace Logger;
+
+public class LogFactory
 {
-    public class LogFactory
+    public BaseLogger CreateLogger(string className)
     {
-        public BaseLogger CreateLogger(string className)
+        FileLogger fileLogger = new FileLogger
         {
             
-            return null;
-        }
+            Name = className
+        };
+        return fileLogger;
     }
 }
