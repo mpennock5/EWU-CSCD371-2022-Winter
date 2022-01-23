@@ -19,6 +19,8 @@ public class FileLoggerTests
         Assert.AreEqual<string>(fileLogger.FilePath!, filePath);
     }
 
+    // Handled by File.AppendAllText
+    // Candidate for deletion
     [TestMethod]
     public void FileLogger_CreatesFileIfNoneExists_True()
     {
@@ -31,5 +33,30 @@ public class FileLoggerTests
 
         // Assert
         Assert.IsTrue(exists);
+    }
+
+    [TestMethod]
+    public void FileLogger_LogGeneratesLogBasedOnLogLevel_true()
+    {
+        // Arrange
+        FileLogger fileLogger = new("logger", Path.Combine(Directory.GetCurrentDirectory(), "Logs.txt"));
+        LogLevel logLevel = new();
+        string message = "Test Message";
+        bool messageWritten = false;
+
+        // Act
+        fileLogger.Log(logLevel, message);
+        
+        foreach (string line in File.ReadLines(fileLogger.FilePath!))
+        {
+            if (line.Contains(message))
+            {
+                messageWritten = true;
+            }
+        }
+
+        // Assert
+        Assert.IsTrue(messageWritten);
+
     }
 }
