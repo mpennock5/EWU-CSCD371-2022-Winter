@@ -13,7 +13,7 @@ public class FileLoggerTests
         string filePath = Directory.GetCurrentDirectory();
 
         // Act
-        FileLogger fileLogger = new("logger", Path.Combine(Directory.GetCurrentDirectory(), "Logs.txt"));
+        FileLogger fileLogger = new("logger", Directory.GetCurrentDirectory());
 
         // Assert
         Assert.AreEqual<string>(fileLogger.FilePath!, filePath);
