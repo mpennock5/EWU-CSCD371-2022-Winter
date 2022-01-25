@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
 
 namespace Logger.Tests;
 
@@ -9,13 +10,53 @@ public class FileLoggerTests
     public void FileLogger_TakesFilePath_True()
     {
         // Arrange
-        string filePath = "this will be a file path";
+        string filePath = Directory.GetCurrentDirectory();
+
         // Act
-        FileLogger logger = new FileLogger
-        {
-            FilePath = filePath
-        };
+        FileLogger fileLogger = new("logger", Path.Combine(Directory.GetCurrentDirectory(), "Logs.txt"));
+
         // Assert
-        Assert.AreEqual<string>(logger.FilePath, filePath);
+        Assert.AreEqual<string>(fileLogger.FilePath!, filePath);
+    }
+
+    // Handled by File.AppendAllText
+    // Candidate for deletion
+    [TestMethod]
+    public void FileLogger_CreatesFileIfNoneExists_True()
+    {
+        // Arrange
+        FileLogger fileLogger = new("logger", Path.Combine(Directory.GetCurrentDirectory(), "Logs.txt"));
+
+        // Act
+        fileLogger.CreateFileIfNoneExists();
+        bool exists = fileLogger.CheckForFile();
+
+        // Assert
+        Assert.IsTrue(exists);
+    }
+
+    [TestMethod]
+    public void FileLogger_LogGeneratesLogBasedOnLogLevel_true()
+    {
+        // Arrange
+        FileLogger fileLogger = new("logger", Path.Combine(Directory.GetCurrentDirectory(), "Logs.txt"));
+        LogLevel logLevel = new();
+        string message = "Test Message";
+        bool messageWritten = false;
+
+        // Act
+        fileLogger.Log(logLevel, message);
+        
+        foreach (string line in File.ReadLines(fileLogger.FilePath!))
+        {
+            if (line.Contains(message))
+            {
+                messageWritten = true;
+            }
+        }
+
+        // Assert
+        Assert.IsTrue(messageWritten);
+
     }
 }

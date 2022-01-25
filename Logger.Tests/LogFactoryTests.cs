@@ -16,5 +16,34 @@ namespace Logger.Tests
             // Assert
             Assert.AreEqual<string>(baseLogger.Name, "fileLogger");
         }
+
+        [TestMethod]
+        public void LogFactory_ConfigureFileLoggerUsesPrivateMember_True()
+        {
+            // Arrange
+            LogFactory logFactory = new LogFactory();
+
+            // Act
+            logFactory.ConfigureFileLogger("//this_is_a_path");
+            var logger = logFactory.CreateLogger("fileLogger");
+
+            // Assert
+            Assert.AreEqual<string>(logger._FilePath!, "//this_is_a_path");
+
+        }
+
+        [TestMethod]
+        public void LogFactory_IfFileLoggerNotConfiguredReturnNull_True()
+        {
+            // Arrange
+            LogFactory logFactory = new LogFactory();
+
+            // Act
+            var logger = logFactory.CreateLogger("fileLogger");
+
+            // Assert
+            Assert.IsNull(logger);
+
+        }
     }
 }
