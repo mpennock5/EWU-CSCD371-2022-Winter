@@ -6,10 +6,10 @@ namespace Logger;
 public class FileLogger : BaseLogger
 {
     
-    public FileLogger(string Name, string FilePath)
+    public FileLogger(string name, string filePath)
     {
-        _Name = Name;
-        _FilePath = FilePath;
+        Name = name;
+        FilePath = filePath;
     }
 
     public override void Log(LogLevel logLevel, string message)
@@ -48,8 +48,9 @@ public class FileLogger : BaseLogger
         }
 
     }
+    private string? _Name;
 
-    public string? FilePath
+    public override string? FilePath
     {
         get => _FilePath!;
 
@@ -64,6 +65,8 @@ public class FileLogger : BaseLogger
 
     }
 
+    private string? _FilePath;
+    /*
     // Handled by File.AppendAllText
     // Candidate for deletion
     public void CreateFileIfNoneExists()
@@ -78,5 +81,6 @@ public class FileLogger : BaseLogger
     {
         return File.Exists(FilePath);
     }
+    */
 }
 

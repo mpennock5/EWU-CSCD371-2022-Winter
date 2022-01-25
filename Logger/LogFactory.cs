@@ -3,19 +3,22 @@ namespace Logger;
 
 public class LogFactory
 {
-    private string? _testPath;
+    private string? filePath;
 
-    public BaseLogger CreateLogger(string className)
+    public BaseLogger CreateLogger(string? className)
     {
-        if(_testPath is null)
+        if(filePath is null)
         {
             return null!;
         }
         // Path.Combine(Directory.GetCurrentDirectory(), "Logs.txt")
-        FileLogger fileLogger = new(className, _testPath!);
+        FileLogger fileLogger = new(className!, filePath);
         
         return fileLogger;
     }
-    
-    public string ConfigureFileLogger(string testPath) => _testPath = testPath;
+
+    public string ConfigureFileLogger(string? loggerPath)
+    {
+        return filePath = loggerPath!;
+    }
 }

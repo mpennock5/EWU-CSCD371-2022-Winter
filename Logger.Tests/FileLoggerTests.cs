@@ -18,7 +18,7 @@ public class FileLoggerTests
         // Assert
         Assert.AreEqual<string>(fileLogger.FilePath!, filePath);
     }
-
+    /*
     // Handled by File.AppendAllText
     // Candidate for deletion
     [TestMethod]
@@ -34,7 +34,7 @@ public class FileLoggerTests
         // Assert
         Assert.IsTrue(exists);
     }
-
+    */
     [TestMethod]
     public void FileLogger_LogGeneratesLogBasedOnLogLevel_true()
     {

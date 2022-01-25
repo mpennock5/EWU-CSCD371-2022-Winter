@@ -30,7 +30,7 @@ namespace Logger.Tests
             var logger = logFactory.CreateLogger("fileLogger");
             
             // Assert
-            Assert.AreEqual<string>(logger._FilePath!, "//this_is_a_path");
+            Assert.AreEqual<string>(logger.FilePath!, "//this_is_a_path");
 
         }
 
