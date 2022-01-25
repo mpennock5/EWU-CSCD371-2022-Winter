@@ -1,5 +1,4 @@
 ﻿using System.IO;
-
 namespace Logger;
 
 public class LogFactory
@@ -14,6 +13,7 @@ public class LogFactory
         }
         // Path.Combine(Directory.GetCurrentDirectory(), "Logs.txt")
         FileLogger fileLogger = new(className, _testPath!);
+        
         return fileLogger;
     }
     

@@ -2,6 +2,7 @@
 using System.IO;
 
 namespace Logger.Tests
+    
 {
     [TestClass]
     public class LogFactoryTests
@@ -12,6 +13,7 @@ namespace Logger.Tests
             // Arrange
             LogFactory logFactory = new LogFactory();
             // Act
+            logFactory.ConfigureFileLogger("this is a test");
             var baseLogger = logFactory.CreateLogger("fileLogger");
             // Assert
             Assert.AreEqual<string>(baseLogger.Name, "fileLogger");
@@ -26,7 +28,7 @@ namespace Logger.Tests
             // Act
             logFactory.ConfigureFileLogger("//this_is_a_path");
             var logger = logFactory.CreateLogger("fileLogger");
-
+            
             // Assert
             Assert.AreEqual<string>(logger._FilePath!, "//this_is_a_path");
 
