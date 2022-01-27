@@ -13,7 +13,7 @@ namespace Logger.Tests
             // Arrange
             LogFactory logFactory = new LogFactory();
             // Act
-            logFactory.ConfigureFileLogger("this is a test");
+            logFactory.ConfigureFileLogger(Directory.GetCurrentDirectory());
             var baseLogger = logFactory.CreateLogger("fileLogger");
             // Assert
             Assert.AreEqual<string>(baseLogger.Name, "fileLogger");
@@ -26,11 +26,11 @@ namespace Logger.Tests
             LogFactory logFactory = new LogFactory();
 
             // Act
-            logFactory.ConfigureFileLogger("//this_is_a_path");
+            logFactory.ConfigureFileLogger(Directory.GetCurrentDirectory());
             var logger = logFactory.CreateLogger("fileLogger");
             
             // Assert
-            Assert.AreEqual<string>(logger.FilePath!, "//this_is_a_path");
+            Assert.AreEqual<string>(logger.FilePath!, Directory.GetCurrentDirectory());
 
         }
 
@@ -41,6 +41,20 @@ namespace Logger.Tests
             LogFactory logFactory = new LogFactory();
 
             // Act
+            var logger = logFactory.CreateLogger("fileLogger");
+
+            // Assert
+            Assert.IsNull(logger);
+
+        }
+        [TestMethod]
+        public void LogFactory_IfFileLoggerPathNotValidReturnNull_True()
+        {
+            // Arrange
+            LogFactory logFactory = new LogFactory();
+
+            // Act
+            logFactory.ConfigureFileLogger("This Is Not A Path In My System");
             var logger = logFactory.CreateLogger("fileLogger");
 
             // Assert

@@ -18,23 +18,7 @@ public class FileLoggerTests
         // Assert
         Assert.AreEqual<string>(fileLogger.FilePath!, filePath);
     }
-    /*
-    // Handled by File.AppendAllText
-    // Candidate for deletion
-    [TestMethod]
-    public void FileLogger_CreatesFileIfNoneExists_True()
-    {
-        // Arrange
-        FileLogger fileLogger = new("logger", Path.Combine(Directory.GetCurrentDirectory(), "Logs.txt"));
-
-        // Act
-        fileLogger.CreateFileIfNoneExists();
-        bool exists = fileLogger.CheckForFile();
-
-        // Assert
-        Assert.IsTrue(exists);
-    }
-    */
+    
     [TestMethod]
     public void FileLogger_LogGeneratesLogBasedOnLogLevel_true()
     {

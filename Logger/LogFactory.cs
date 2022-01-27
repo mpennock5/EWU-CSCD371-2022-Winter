@@ -7,7 +7,7 @@ public class LogFactory
 
     public BaseLogger CreateLogger(string? className)
     {
-        if(filePath is null)
+        if(filePath is null || !Directory.Exists(filePath))
         {
             return null!;
         }

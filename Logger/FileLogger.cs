@@ -64,23 +64,7 @@ public class FileLogger : BaseLogger
         }
 
     }
-
     private string? _FilePath;
-    /*
-    // Handled by File.AppendAllText
-    // Candidate for deletion
-    public void CreateFileIfNoneExists()
-    {
-        if (!File.Exists(FilePath))
-        {
-            File.Create(FilePath);
-        }
-    }
-
-    public bool CheckForFile()
-    {
-        return File.Exists(FilePath);
-    }
-    */
+  
 }
 
