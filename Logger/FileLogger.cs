@@ -42,7 +42,7 @@ public class FileLogger : BaseLogger
         {
             if (value is null)
             {
-                throw new ArgumentNullException(nameof(value));
+                throw new ArgumentNullException(nameof(value), $"{nameof(Name)} cannot be null");
             }
             _Name = value;
         }

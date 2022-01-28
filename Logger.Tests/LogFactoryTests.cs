@@ -13,10 +13,10 @@ namespace Logger.Tests
             // Arrange
             LogFactory logFactory = new LogFactory();
             // Act
-            logFactory.ConfigureFileLogger(Directory.GetCurrentDirectory());
-            var baseLogger = logFactory.CreateLogger("fileLogger");
+            logFactory.ConfigureFileLogger(Path.Combine(Directory.GetCurrentDirectory(), "Logs.txt"));
+            var baseLogger = logFactory.CreateLogger("FileLogger");
             // Assert
-            Assert.AreEqual<string>(baseLogger.Name, "fileLogger");
+            Assert.AreEqual<string>(baseLogger.Name, "FileLogger");
         }
 
         [TestMethod]
@@ -26,11 +26,11 @@ namespace Logger.Tests
             LogFactory logFactory = new LogFactory();
 
             // Act
-            logFactory.ConfigureFileLogger(Directory.GetCurrentDirectory());
-            var logger = logFactory.CreateLogger("fileLogger");
+            logFactory.ConfigureFileLogger(Path.Combine(Directory.GetCurrentDirectory(), "Logs.txt"));
+            var logger = logFactory.CreateLogger("FileLogger");
             
             // Assert
-            Assert.AreEqual<string>(logger.FilePath!, Directory.GetCurrentDirectory());
+            Assert.AreEqual<string>(logger.FilePath!, Path.Combine(Directory.GetCurrentDirectory(), "Logs.txt"));
 
         }
 
@@ -41,25 +41,12 @@ namespace Logger.Tests
             LogFactory logFactory = new LogFactory();
 
             // Act
-            var logger = logFactory.CreateLogger("fileLogger");
+            var logger = logFactory.CreateLogger("FileLogger");
 
             // Assert
             Assert.IsNull(logger);
 
         }
-        [TestMethod]
-        public void LogFactory_IfFileLoggerPathNotValidReturnNull_True()
-        {
-            // Arrange
-            LogFactory logFactory = new LogFactory();
-
-            // Act
-            logFactory.ConfigureFileLogger("This Is Not A Path In My System");
-            var logger = logFactory.CreateLogger("fileLogger");
-
-            // Assert
-            Assert.IsNull(logger);
-
-        }
+        
     }
 }
