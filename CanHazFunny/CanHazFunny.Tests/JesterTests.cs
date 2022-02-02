@@ -15,7 +15,7 @@ public class JesterTests
         JokeOutput jokeOutput = new JokeOutput();
         Jester jester = new Jester(jokeOutput, jokeService);
 
-        Assert.AreEqual(jester.JokeOutput, jokeOutput);
+        Assert.AreEqual<IJokeOutput>(jester.JokeOutput, jokeOutput);
     }
 
     [TestMethod]
@@ -25,7 +25,7 @@ public class JesterTests
         JokeOutput jokeOutput = new JokeOutput();
         Jester jester = new Jester(jokeOutput, jokeService);
 
-        Assert.AreEqual(jester.JokeService, jokeService);
+        Assert.AreEqual<IJokeService>(jester.JokeService, jokeService);
 
     }
     [TestMethod]
@@ -40,5 +40,6 @@ public class JesterTests
         Assert.IsFalse(jester.Joke!.Contains("Chuck Norris"));
 
     }
+    
 }   
      

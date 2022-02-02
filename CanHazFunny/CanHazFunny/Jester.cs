@@ -6,8 +6,8 @@ public class Jester
 {
     public Jester(IJokeOutput jokeOutput, IJokeService jokeService)
     {
-        JokeOutput = jokeOutput;
-        JokeService = jokeService;
+        JokeOutput = jokeOutput ?? throw new ArgumentNullException(nameof(jokeOutput));
+        JokeService = jokeService ?? throw new ArgumentNullException(nameof(jokeService));
     }
 
     public IJokeOutput JokeOutput { get; }
