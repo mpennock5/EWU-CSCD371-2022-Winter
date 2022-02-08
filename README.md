@@ -9,15 +9,15 @@ The purpose of this assignment is to write a class library is to learn how to wr
 Chapter 11, 12
 
 ## Instructions
-- Create a *class library* project called "GenericsHomework.". ❌✔
+- Create a *class library* project called "GenericsHomework.". ✔
 - Create a node class that can contain a value of any type and points to the next node and traversing the next node points back to the first item.
   - Define the `Node` class
-  - Include a constuctor that takes a value.  (No validation is necessary on the value). ❌✔
-  - Add a `ToString()` override that writes out the value's `ToString()` result. ❌✔
-  - Add a `Next` property that references the next node or else refers back to itself if there are no other nodes in the list. ❌✔
+  - Include a constuctor that takes a value.  (No validation is necessary on the value). ✔
+  - Add a `ToString()` override that writes out the value's `ToString()` result. ✔
+  - Add a `Next` property that references the next node or else refers back to itself if there are no other nodes in the list. ✔
     - The `Next` property should be non-nullable (careful to follow the non-nullable property guidelines) ❌✔
-    - The `Next` property setter should be private. ❌✔
-  - Add an `Append` method that takes a value and appends a new `Node` instance after the current node (by invoking the `Next` property). ❌✔
+    - The `Next` property setter should be private. ✔
+  - Add an `Append` method that takes a value and appends a new `Node` instance after the current node (by invoking the `Next` property). ✔
   - Add a Clear method that effectively removes all items from a list except the current node. Pay attention as to whether you should be concerned with the following:
     - Whether it is sufficient to only set Next to itself ❌✔
     - Whether to set the removed items to circle back on themselves. In other words, whether to close the loop of the removed items. (Provide a test to show why this is required if it is required). ❌✔
