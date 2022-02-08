@@ -1,30 +1,63 @@
 ﻿namespace GenericsHomework;
-public class Node
+public class Node<TVal> where TVal : notnull
 {
-    public Node(object node)
+
+    public Node(TVal val)
     {
-        _Node = node;
+        Val = val;
+        Next = this;
+        
     }
 
-    public object _Node { get; set; }
+    public TVal Val{ get; set; }
+    public Node<TVal> Next { get; private set; }
+   
 
-    public void Append(object value)
+    public void Append(TVal node)
     {
+        if(Exists(node))
+            throw new ArgumentException("This value already exists. Values must be unique.");
 
+        Node<TVal> node1 = new(node);
+        if(Next == this)
+        {
+            Next = node1;
+            node1.Next = this;
+        }
+        else
+        {
+            node1.Next = Next;
+            Next = node1;
+        }        
     }
 
-    public void Clear(Node current)
+    public void Clear()
     {
-
+        /*
+         * Only need to get rid of the link from the first
+         * node because only the first node can access the subsequent nodes,
+         * thus leaving no more references to the objects created.
+         * This is proven in GenericsHomeworkTests.Node_GarbageCollection()
+        */
+        Next = this;
     }
 
-    public Boolean Exists(object value)
+    public Boolean Exists(TVal val)
     {
-        return false;
+        Node<TVal> temp = this;
+        while(!temp.Val.Equals(val))
+        {
+            if(temp.Next == this)
+                return false;
+
+            temp = temp.Next;
+        }
+            
+        return true;
     }
 
-    public override string? ToString()
+    public override string ToString()
     {
-        return base.ToString();
+        return $"{Val}";
     }
 }
