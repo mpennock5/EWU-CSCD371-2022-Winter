@@ -4,7 +4,7 @@ public class Node<TVal> where TVal : notnull
 
     public Node(TVal val)
     {
-        Val = val;
+        Val = val ?? throw new ArgumentNullException("TVal cannot be null");
         Next = this;
         
     }

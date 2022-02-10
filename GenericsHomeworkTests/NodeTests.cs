@@ -61,6 +61,14 @@ public class NodeTests
 
         Assert.IsFalse(isAlive);  
     }
+    [TestMethod]
+    public void NullTest()
+    {
+
+        Action action = () =>  new Node<string>(null!);
+        
+        Assert.ThrowsException<ArgumentNullException>(() => action.Invoke());
+    }
 
     public Node<int> testHelper()
     {
@@ -76,5 +84,7 @@ public class NodeTests
         WeakReference nodeRef = new(node.Next);
         return nodeRef;
     }
+
+ 
 
 }
