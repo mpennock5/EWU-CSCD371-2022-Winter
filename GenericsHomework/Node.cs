@@ -4,7 +4,7 @@ public class Node<TVal> where TVal : notnull
 
     public Node(TVal val)
     {
-        Val = val ?? throw new ArgumentNullException("TVal cannot be null");
+        Val = val ?? throw new ArgumentNullException($"Node<{typeof(TVal)}> value cannot be null");
         Next = this;
         
     }
