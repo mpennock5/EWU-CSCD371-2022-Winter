@@ -39,6 +39,18 @@ public class NodeTests
         Assert.AreEqual<int>(43, node.Next.Val);
 
     }
+    [TestMethod]
+    public void Node_AppendInsertsAfterOriginalNode()
+    {
+        Node<int> node = testHelper();
+        Assert.AreEqual<int>(45,node.Next.Val);
+    }
+    [TestMethod]
+    public void Node_MaintainsCircularLinkWithFourNodes()
+    {
+        Node<int> node = testHelper();
+        Assert.AreEqual<int>(42, node.Next.Next.Next.Next.Val);
+    }
 
     [TestMethod]
     public void Node_NextPropertyReferencesSelf()
