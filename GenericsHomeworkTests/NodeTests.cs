@@ -62,7 +62,7 @@ public class NodeTests
         Assert.IsFalse(isAlive);  
     }
     [TestMethod]
-    public void NullTest()
+    public void Node_GenericConstructorThrowsErrorIfPassedNull()
     {
 
         Action action = () =>  new Node<string>(null!);
