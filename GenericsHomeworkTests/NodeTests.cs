@@ -65,7 +65,7 @@ public class NodeTests
     public void Node_GarbageCollection()
     {
         Node<int> node = testHelper();
-        WeakReference nodeRef = AnotherGarbageTestHelper(node);
+        WeakReference nodeRef = GarbageCollectionTestHelper(node);
         node.Clear();
 
         GC.Collect();
@@ -91,7 +91,7 @@ public class NodeTests
         return node;
     }
 
-    public WeakReference AnotherGarbageTestHelper(Node<int> node)
+    public WeakReference GarbageCollectionTestHelper(Node<int> node)
     {
         WeakReference nodeRef = new(node.Next);
         return nodeRef;
