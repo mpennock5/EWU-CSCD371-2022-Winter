@@ -7,7 +7,7 @@ namespace Assignment
 {
     public class SampleData : ISampleData
     {
-        private IEnumerable<string>? _CsvRows;
+        private List<string>? _CsvRows;
         private string peopleCSV = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace("Assignment.dll", "People.csv");
 
         public SampleData()
@@ -31,8 +31,14 @@ namespace Assignment
         }
 
         // 2.
-        public IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows() 
-            => throw new NotImplementedException();
+        public IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows()
+        {
+            List<string> split = CsvRows.Select(x => x.Split(',')[6]).Distinct().ToList();
+            split.Sort();
+
+            return split;
+        }
+           
 
         // 3.
         public string GetAggregateSortedListOfStatesUsingCsvRows()

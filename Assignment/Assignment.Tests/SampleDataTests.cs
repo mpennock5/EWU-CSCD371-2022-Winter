@@ -19,4 +19,15 @@ public class SampleDataTests
         Assert.AreEqual<string>("1,Priscilla,Jenyns,pjenyns0@state.gov,7884 Corry Way,Helena,MT,70577", rows[0]);
        
     }
+
+    [TestMethod]
+    public void UniqueSortedListofStates()
+    {
+        SampleData sample = new SampleData();
+        
+        IEnumerable<string> states = sample.GetUniqueSortedListOfStatesGivenCsvRows();
+
+        Assert.AreEqual<string>("AL", states.First());
+        Assert.AreEqual<string>("WV", states.Last());   
+    }
 }
