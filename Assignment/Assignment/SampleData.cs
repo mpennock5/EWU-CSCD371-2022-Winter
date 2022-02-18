@@ -15,8 +15,8 @@ namespace Assignment
             IEnumerable<string> CSV = File.ReadAllLines(peopleCSV);
             CsvRows = CSV;
         }
-        // 1.
-        // Returns each row as a single string. Read up on chapter 13 and 15 for syntax
+        //double check that the query is being cached as a list.
+        //may need additional property that caches the rows data or query might run for every function (not good).
         public IEnumerable<string> CsvRows 
         { 
             get
