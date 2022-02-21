@@ -41,4 +41,12 @@ public class SampleDataTests
         Assert.AreEqual<string>("AL, AZ, CA, DC, FL, GA, IN, KS, LA, MD, MN, MO, MT, NC, " +
                                 "NE, NH, NV, NY, OR, PA, SC, TN, TX, UT, VA, WA, WV", states);
     }
+
+    [TestMethod]
+    public void PeopleReturnsAPerson()
+    {
+        SampleData sample = new();
+
+        Assert.IsInstanceOfType(sample.People, typeof(Person));
+    }
 }
