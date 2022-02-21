@@ -42,10 +42,23 @@ namespace Assignment
 
         // 3.
         public string GetAggregateSortedListOfStatesUsingCsvRows()
-            => throw new NotImplementedException();
+            => string.Join(", ", GetUniqueSortedListOfStatesGivenCsvRows());
 
         // 4.
-        public IEnumerable<IPerson> People => throw new NotImplementedException();
+        public IEnumerable<IPerson> People
+        {
+            get
+            {
+                List<string> person = CsvRows.OrderBy(state => state.Split(',')[6])
+                .ThenBy(city => city.Split(',')[5]).ThenBy(zip => zip.Split(',')[7]).ToList();
+
+
+                Address address = new(person[4], person[5], person[6], person[7]);
+                Person people = new(person[1], person[2], address, person[3]);
+                // Not casting/returning properly
+                return (IEnumerable<IPerson>)people;
+            }
+        }
 
         // 5.
         public IEnumerable<(string FirstName, string LastName)> FilterByEmailAddress(

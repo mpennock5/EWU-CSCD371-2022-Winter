@@ -1,5 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <RootNamespace>Assignment</RootNamespace>
+	<TargetFramework>net6.0</TargetFramework>
+	<Nullable>enable</Nullable>
+	<LangVersion>10.0</LangVersion>
+	<EnableNETAnalyzers>true</EnableNETAnalyzers>
+	<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	<CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
   </PropertyGroup>
 </Project>
