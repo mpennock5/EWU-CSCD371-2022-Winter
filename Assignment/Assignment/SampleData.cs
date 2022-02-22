@@ -63,7 +63,11 @@ namespace Assignment
 
         // 5.
         public IEnumerable<(string FirstName, string LastName)> FilterByEmailAddress(
-            Predicate<string> filter) => throw new NotImplementedException();
+            Predicate<string> filter)
+        {
+            //IEnumerable<(string FirstName, string LastName)> filtered = 
+            return People.Where(item => item.EmailAddress.Equals(filter)).Select(item => (item.FirstName, item.LastName));
+        }
 
         // 6.
         public string GetAggregateListOfStatesGivenPeopleCollection(

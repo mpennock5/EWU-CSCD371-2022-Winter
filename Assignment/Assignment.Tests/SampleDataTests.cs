@@ -60,4 +60,16 @@ public class SampleDataTests
         Assert.AreEqual<string>("WV", testPeople.Last().Address.State);
 
     }
+
+    [TestMethod]
+    public void FilterWorks()
+    {
+        SampleData sample = new();
+
+        Predicate<string> test = sample.FilterByEmailAddress("pjenyns0@state.gov");
+        //Priscilla,Jenyns,pjenyns0@state.gov
+        Assert.AreEqual<(string, string)>(("Priscilla", "Jenyns"), sample.FilterByEmailAddress());
+        
+
+    }
 }
