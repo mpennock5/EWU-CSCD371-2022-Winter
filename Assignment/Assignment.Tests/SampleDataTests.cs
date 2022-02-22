@@ -47,6 +47,17 @@ public class SampleDataTests
     {
         SampleData sample = new();
 
-        Assert.IsInstanceOfType(sample.People, typeof(Person));
+        Assert.IsInstanceOfType(sample.People, typeof(IEnumerable<Person>));
+    }
+
+    [TestMethod]
+    public void ListOfPeopleIsSorted()
+    {
+        SampleData sample = new();
+        List<IPerson> testPeople = sample.People.ToList();
+
+        Assert.AreEqual<string>("AL", testPeople.First().Address.State);
+        Assert.AreEqual<string>("WV", testPeople.Last().Address.State);
+
     }
 }

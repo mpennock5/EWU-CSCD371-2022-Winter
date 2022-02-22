@@ -49,14 +49,26 @@ namespace Assignment
         {
             get
             {
+                /*
                 List<string> person = CsvRows.OrderBy(state => state.Split(',')[6])
                 .ThenBy(city => city.Split(',')[5]).ThenBy(zip => zip.Split(',')[7]).ToList();
-
-
+                */
+                
+                IEnumerable<Person> people = from person in CsvRows.OrderBy(state => state.Split(',')[6])
+                .ThenBy(city => city.Split(',')[5]).ThenBy(zip => zip.Split(',')[7]).ToList()
+                let personAttribute = person.Split(',')
+                                              select new Person(personAttribute[1], 
+                                              personAttribute[2], 
+                                              new Address(personAttribute[4], personAttribute[5], personAttribute[6], personAttribute[7]),
+                                              personAttribute[3]);
+                
+                /*
                 Address address = new(person[4], person[5], person[6], person[7]);
                 Person people = new(person[1], person[2], address, person[3]);
                 // Not casting/returning properly
-                return (IEnumerable<IPerson>)people;
+                */
+                
+                return people;
             }
         }
 
