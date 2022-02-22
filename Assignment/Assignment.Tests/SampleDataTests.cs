@@ -66,10 +66,22 @@ public class SampleDataTests
     {
         SampleData sample = new();
 
-        Predicate<string> test = sample.FilterByEmailAddress("pjenyns0@state.gov");
-        //Priscilla,Jenyns,pjenyns0@state.gov
-        Assert.AreEqual<(string, string)>(("Priscilla", "Jenyns"), sample.FilterByEmailAddress());
-        
+        Predicate<string> email = (string e) => { return e == "pjenyns0@state.gov"; };
+
+        Assert.AreEqual<(string, string)>(("Priscilla", "Jenyns"), sample.FilterByEmailAddress(email).ToList()[0]);
+
+
+    }
+    [TestMethod]
+    public void AggregateStatesGivenPeople()
+    {
+        SampleData sample = new();
+
+        string states = sample.GetAggregateListOfStatesGivenPeopleCollection(sample.People);
+
+        Assert.AreEqual<string>("AL, AZ, CA, DC, FL, GA, IN, KS, LA, MD, MN, MO, MT, NC, " +
+                                "NE, NH, NV, NY, OR, PA, SC, TN, TX, UT, VA, WA, WV", states);
+
 
     }
 }

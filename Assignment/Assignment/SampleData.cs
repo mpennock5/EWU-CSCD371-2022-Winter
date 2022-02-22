@@ -65,12 +65,14 @@ namespace Assignment
         public IEnumerable<(string FirstName, string LastName)> FilterByEmailAddress(
             Predicate<string> filter)
         {
-            //IEnumerable<(string FirstName, string LastName)> filtered = 
-            return People.Where(item => item.EmailAddress.Equals(filter)).Select(item => (item.FirstName, item.LastName));
+         
+            return People.Where(item => filter(item.EmailAddress)).Select(item => (item.FirstName, item.LastName));
         }
 
         // 6.
         public string GetAggregateListOfStatesGivenPeopleCollection(
-            IEnumerable<IPerson> people) => throw new NotImplementedException();
+            IEnumerable<IPerson> people) => 
+            people.Select(person => person.Address.State).Distinct().Aggregate((s1, s2) => s1 + ", " + s2);
+   
     }
 }
