@@ -5,12 +5,16 @@
     height: 20%;
     background-color: black;
     text-align: left;
+    margin: 2px 15%;
+    padding: 1px 10px;
 }
 
 #main {
     width: 70%;
     height: 80%;
-    float: left;
+    text-align: left;
+    margin: 0px 15%;
+    padding: 8px 20px 8px 0px;
 }
 
 .redText {  
