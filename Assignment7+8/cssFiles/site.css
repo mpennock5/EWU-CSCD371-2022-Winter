@@ -1,0 +1,18 @@
+﻿body { margin: 0px }
+
+#header {
+    width: 70%;
+    height: 20%;
+    background-color: black;
+    text-align: left;
+}
+
+#main {
+    width: 70%;
+    height: 80%;
+    float: left;
+}
+
+.redText {  
+    color: red;
+}
