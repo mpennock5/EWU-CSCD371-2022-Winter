@@ -80,3 +80,13 @@
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+.button-color {
+    color: white;
+    background-color: deepskyblue;
+}
+
+.table-border {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
