@@ -85,6 +85,19 @@ a:hover, .dropdown:hover .dropbtn {
     display: block;
 }
 
+.menu-button {
+    width: 200px;
+    display: block;
+    background: #4E9CAF;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+    padding: 5px;
+    margin: 2px 10px;
+}
+
 .button-color {
     display: block;
     background: #4E9CAF;
@@ -94,6 +107,8 @@ a:hover, .dropdown:hover .dropbtn {
     color: white;
     font-weight: bold;
     line-height: 25px;
+    float: left;
+    margin-right: 5px;
 }
 
 .table-border {
@@ -102,11 +117,14 @@ a:hover, .dropdown:hover .dropbtn {
 }
 .apiButton {
     display: block;
-    background: #4E9CAF;
+    background: #A9A9A9;
     padding: 10px;
     text-align: center;
+    text-decoration: none;
     border-radius: 5px;
-    color: white;
+    color: black;
     font-weight: bold;
     line-height: 25px;
+    float: left;
+    margin-right: 5px;
 }
