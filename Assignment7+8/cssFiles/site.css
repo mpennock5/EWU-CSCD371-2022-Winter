@@ -48,7 +48,11 @@
 }
 
 
- a:hover, .dropdown:hover .dropbtn {
+a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+.button-color:hover {
     background-color: red;
 }
 
@@ -82,11 +86,27 @@
 }
 
 .button-color {
+    display: block;
+    background: #4E9CAF;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
     color: white;
-    background-color: deepskyblue;
+    font-weight: bold;
+    line-height: 25px;
 }
 
 .table-border {
     border: 1px solid black;
     border-collapse: collapse;
+}
+.apiButton {
+    display: block;
+    background: #4E9CAF;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
 }
