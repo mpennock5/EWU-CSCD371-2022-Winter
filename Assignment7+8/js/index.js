@@ -1,3 +1,7 @@
+function showDropDown() {
+    document.querySelector(".dropdown-content").classList.toggle("show");
+}
+
 axios({
     method: 'get',
     url: 'https://v2.jokeapi.dev/joke/Programming'
@@ -7,10 +11,12 @@ axios({
         console.log(response.data.joke);
 
         let jokeText = document.querySelector(".joke");
+        let delivery = document.querySelector(".punchline");
         if (response.data.type == "single") {
             jokeText.innerText = response.data.joke;
         } else {
-            jokeText.innerText = response.data.setup + " " + response.data.delivery;
+            jokeText.innerText = response.data.setup;
+            delivery.innerText = response.data.delivery;
         }
         
 
@@ -30,15 +36,21 @@ document.getElementById("jokeCall").addEventListener("click", function () {
             console.log(response.data.joke);
 
             let jokeText = document.querySelector(".joke");
+            let delivery = document.querySelector(".punchline");
+            jokeText.innerText = "";
+            delivery.innerText = " ";
             function getJoke() {
                 if (response.data.type == "single") {
                     jokeText.innerText = response.data.joke;
                 } else {
-                    jokeText.innerText = response.data.setup + " " + response.data.delivery;
+                    jokeText.innerText = response.data.setup;
+                    setTimeout(function () {
+                        delivery.innerText = response.data.delivery;
+                    }, 4000)                      
                 }
             }
 
-            setTimeout(getJoke, 4000);
+            getJoke();
 
         })
         .catch(function (error) {
