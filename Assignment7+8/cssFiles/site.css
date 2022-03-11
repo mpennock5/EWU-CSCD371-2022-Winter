@@ -17,6 +17,10 @@
     padding: 8px 20px 8px 0px;
 }
 
+.header {
+    background: #A9A9A9;
+}
+
 .title {  
     font-size: 30px;
     color: red;
@@ -30,21 +34,24 @@
     margin: 6px 0;
 }
 
+.menu-style {
+    font-size: 30px;
+    font-weight: lighter;
+    color: white;
+}
 
 .dropdown {
     float: left;
     overflow: hidden;
 }
 
-
 .dropdown .dropbtn {
-    font-size: 16px;
+    font-size: 35px;
     border: none;
     outline: none;
     color: white;
-    padding: 14px 16px;
+    padding: 14px 16px 14px 5px;
     background-color: inherit;
-
 }
 
 
@@ -113,13 +120,24 @@ a:hover, .dropdown:hover .dropbtn {
     font-weight: bold;
     line-height: 25px;
     float: left;
-    margin-right: 5px;
+    margin: 10px 5px 10px 10px;
 }
 
 .table-border {
+    width: 100%;
     border: 1px solid black;
     border-collapse: collapse;
 }
+
+.table-joke {
+    height: 200px;
+}
+
+.word-formatting {
+    font-size: 25px;
+    margin-left: 10px;
+}
+
 .apiButton {
     display: block;
     background: #A9A9A9;
@@ -131,5 +149,6 @@ a:hover, .dropdown:hover .dropbtn {
     font-weight: bold;
     line-height: 25px;
     float: left;
-    margin-right: 5px;
+    margin: 12px 5px 8px 5px;
 }
+
