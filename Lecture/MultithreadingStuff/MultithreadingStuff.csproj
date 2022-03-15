@@ -7,4 +7,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="AsynchronousWebRequest.cs" />
+    <Compile Remove="Program.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="AsynchronousWebRequest.cs" />
+    <None Include="Program.cs" />
+  </ItemGroup>
+
 </Project>

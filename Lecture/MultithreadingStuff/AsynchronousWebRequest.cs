@@ -30,6 +30,15 @@ namespace AddisonWesley.Michaelis.EssentialCSharp.Chapter20.Listing20_02
 
             using WebClient webClient = new();
             Console.Write("\nDownloading...");
+
+            Task<Task<int>>? t = webClient.DownloadDataTaskAsync(url)
+                .ContinueWith(antecedent =>
+                {
+                    byte[] downloadData = antecedent.Result;
+                    Console.Write("\nSearching...");
+                    return CountOccurrencesAsync(
+                        downloadData, findText);
+                });
             Task task = webClient.DownloadDataTaskAsync(url)
                 .ContinueWith(antecedent =>
                 {
