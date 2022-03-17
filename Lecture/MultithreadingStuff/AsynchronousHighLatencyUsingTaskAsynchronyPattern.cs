@@ -34,9 +34,6 @@ namespace AddisonWesley.Michaelis.EssentialCSharp.Chapter20.Listing20_03
                 Console.Write(".");
             }
 
-            dynamic d = int;
-            d.
-
             Task<int> taskSearch = CountOccurrencesAsync(
              downloadData, findText);
 
