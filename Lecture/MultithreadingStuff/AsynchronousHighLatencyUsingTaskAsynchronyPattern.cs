@@ -2,6 +2,7 @@
 namespace AddisonWesley.Michaelis.EssentialCSharp.Chapter20.Listing20_03
 {
     using System;
+    using System.Dynamic;
     using System.IO;
     using System.Net;
     using System.Threading.Tasks;
@@ -33,7 +34,6 @@ namespace AddisonWesley.Michaelis.EssentialCSharp.Chapter20.Listing20_03
             {
                 Console.Write(".");
             }
-
 
             Task<int> taskSearch = CountOccurrencesAsync(
              downloadData, findText);
