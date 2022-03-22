@@ -59,7 +59,7 @@ public class PingProcess
 
         await Task.WhenAll(all);
         //still working on this below
-        //Have not validated 
+        //Have not validated total
         int total = all.Aggregate(0, (total, item) => total + item.Result.ExitCode);
         stringBuilder.Append(all.Aggregate("", (compiledString, currentString) => compiledString.Trim() + currentString.Result.StdOutput));
         return new PingResult(total, stringBuilder?.ToString().Trim());
@@ -68,9 +68,16 @@ public class PingProcess
     async public Task<PingResult> RunLongRunningAsync(
         string hostNameOrAddress, CancellationToken cancellationToken = default)
     {
-        Task task = null!;
+            Task<PingResult> task = Task.Factory.StartNew(() =>
+            Run(hostNameOrAddress), 
+            cancellationToken, 
+            TaskCreationOptions.LongRunning, 
+            TaskScheduler.Current
+            );
+
         await task;
-        throw new NotImplementedException();
+        return task.Result;
+        
     }
 
     private Process RunProcessInternal(
