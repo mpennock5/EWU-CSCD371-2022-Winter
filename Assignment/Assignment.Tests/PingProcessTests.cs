@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.ExceptionServices;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Assignment.Tests;
@@ -59,6 +61,11 @@ public class PingProcessTests
     {
         // Do NOT use async/await in this test.
         // Test Sut.RunTaskAsync("localhost");
+        PingResult result = default;
+        Task<PingResult> task = Sut.RunTaskAsync("localhost");
+        result = task.Result;
+        AssertValidPingOutput(result);
+
     }
 
     [TestMethod]
@@ -66,28 +73,35 @@ public class PingProcessTests
     {
         // Do NOT use async/await in this test.
         PingResult result = default;
-        // Test Sut.RunAsync("localhost");
+        Task<PingResult> task = Sut.RunAsync("localhost");
+        result = task.Result;
         AssertValidPingOutput(result);
     }
 
     [TestMethod]
-#pragma warning disable CS1998 // Remove this
+
     async public Task RunAsync_UsingTpl_Success()
     {
         // DO use async/await in this test.
         PingResult result = default;
 
-        // Test Sut.RunAsync("localhost");
+        result = await Sut.RunAsync("localhost");
+
         AssertValidPingOutput(result);
     }
-#pragma warning restore CS1998 // Remove this
+
 
 
     [TestMethod]
     [ExpectedException(typeof(AggregateException))]
     public void RunAsync_UsingTplWithCancellation_CatchAggregateExceptionWrapping()
     {
-        
+        CancellationTokenSource cancellationTokenSource = new();
+        CancellationToken token = cancellationTokenSource.Token;
+        cancellationTokenSource.Cancel();
+        Task<PingResult> task = Sut.RunAsync("localhost", token);
+
+        PingResult result = task.Result;
     }
 
     [TestMethod]
@@ -95,6 +109,20 @@ public class PingProcessTests
     public void RunAsync_UsingTplWithCancellation_CatchAggregateExceptionWrappingTaskCanceledException()
     {
         // Use exception.Flatten()
+
+        CancellationTokenSource cancellationTokenSource = new();
+        CancellationToken token = cancellationTokenSource.Token;
+        cancellationTokenSource.Cancel();
+        Task<PingResult> task = Sut.RunAsync("localhost", token);
+
+        try
+        {
+            PingResult result = task.Result;
+        }
+        catch (AggregateException exception)
+        {
+            ExceptionDispatchInfo.Capture(exception.Flatten().InnerException!).Throw();
+        }
     }
 
     [TestMethod]
